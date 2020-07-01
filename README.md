@@ -6,11 +6,11 @@ typora-copy-images-to: Elasticsearch
 
 ## 1.1 定义
 
-![1565406773109](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565406773109.png)
+![1565406773109](Elasticsearch\1565406773109.png)
 
 ### 1.1.1 逻辑设计
 
-![1565406850967](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565406850967.png)
+![1565406850967](Elasticsearch\1565406850967.png)
 
 1. 文档(mongod,即某行某列的值,无模式)
    - 索引和搜索数据的最小单位是文档
@@ -25,7 +25,7 @@ typora-copy-images-to: Elasticsearch
    - 每个类型中字段的定义称为映射
    - 类型是elasticsearch的概念，不属于Lucene
    - 类型包含了映射中的每个字段的定义。映射包括了该类型的文档中可能出现的所有字段
-   - ![1565423530050](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565423530050.png)
+   - ![1565423530050](Elasticsearch\1565423530050.png)
 3. 索引
    - 索引是映射类型的容器
    - 索引存储了所有映射类型的字段
@@ -36,7 +36,7 @@ typora-copy-images-to: Elasticsearch
 
 1. 定义
 
-   - ![1565409791003](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565409791003.png)
+   - ![1565409791003](Elasticsearch\1565409791003.png)
    - 每个索引由5个主要分片组成，而每份主要分片又有一个副本，一共10份分片(新版本后为1个副本)
 
 2. 节点
@@ -50,31 +50,32 @@ typora-copy-images-to: Elasticsearch
 
    2. 分片是把一个大的索引分成多份放到不同的节点上
 
-      - ![1565410129450](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565410129450.png)
+      - ![1565410129450](Elasticsearch\1565410129450.png)
 
    3. 索引由多个主分片以及零个或多个副本分片构成
 
-      - ![1565410355764](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565410355764.png)
+      - ![1565410355764](Elasticsearch\1565410355764.png)
 
    4. 主分片
    
    1. 运行时不可以进行添加和移除
       2. 索引:get-together，分片为get-together0
 
-      - ![1565410181696](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565410181696.png)
+      - ![1565410181696](Elasticsearch\1565410181696.png)
 
    5. 副分片
    
       1. 副分片是主分片的完整副本
    2. 副本分片用于搜索，或是在原有主分片丢失后成为新的主分片
-      3. 运行时可以进行添加和移除
-
+      
+3. 运行时可以进行添加和移除
+      
    6. 在集群中分发分片
    
       1. 一台机器运行着一个Elasticsearch进程，就已经建立了一个拥有单节点的集群
       2. 水平扩展：在节点中加入更多节点(请求分发，负载均衡)
       3. 垂直扩展：为Elasticsearch增加更多硬件资源
-      4. ![1565410555996](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565410555996.png)
+      4. ![1565410555996](Elasticsearch\1565410555996.png)
 
 ## 1.2 基本操作
 
@@ -157,7 +158,7 @@ typora-copy-images-to: Elasticsearch
 
 ### 1.2.3 搜索回复
 
-1. ![1565411724157](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565411724157.png)
+1. ![1565411724157](Elasticsearch\1565411724157.png)
 
 2. 时间
 
@@ -180,7 +181,7 @@ typora-copy-images-to: Elasticsearch
       }
       ```
 
-   2. ![1565412072823](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565412072823.png)
+   2. ![1565412072823](Elasticsearch\1565412072823.png)
 
 4. 命令统计数据
 
@@ -280,7 +281,7 @@ typora-copy-images-to: Elasticsearch
 
    1. 默认情况下，新的结点通过多播发现已有的集群，通过向所有主机发送ping请求，这些主机侦听某个特定的多播地址。如果发现新的集群而且有同样的集群名称，新的节点就会将加入他们。你需要定制化集群的名称，防止默认配置的实例加入到你的集群
 
-   2. 在yml中解除cluster.name这注释。修改为![1565415049554](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565415049554.png)
+   2. 在yml中解除cluster.name这注释。修改为![1565415049554](Elasticsearch\1565415049554.png)
 
       ```
       cluster.name:elasticsearch-in-action
@@ -295,7 +296,7 @@ typora-copy-images-to: Elasticsearch
 
    3. 慢索引日志(cluster-name_index_indexing_slowlog.log)：默认情况下，如果一个索引操作花费的时间多于半秒，将在这里写入一条记录。
 
-   4. ![1565415597231](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565415597231.png)
+   4. ![1565415597231](Elasticsearch\1565415597231.png)
 
       ```
       默认为info
@@ -308,13 +309,13 @@ typora-copy-images-to: Elasticsearch
 
    2. ```
       // 在命令行上
-      SET ES_HEAP_SIZE=500m & bin\elasticsearch.bat
+      SET ES_HEAP_SIZE=500m & binElasticsearch.bat
       // 永久方式:在启动脚本上设置#!bin/sh ES_HEAP_SIZE=500m
       ```
 
 4. 在集群中加入节点
 
-   1. ![1565416026555](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565416026555.png)
+   1. ![1565416026555](Elasticsearch\1565416026555.png)
 
 ## 1.5 索引操作
 
@@ -406,7 +407,7 @@ typora-copy-images-to: Elasticsearch
 
    1. 一个索引的分片初始化以后是无法再做修改的，但可以使用shrink index AP提供的缩小索引分片数机制，但是收缩后的分片数必须是原始分片数的因子。例如：8,收缩为2,4,1
    2. 缩小索引前，索引必须被标记为只读，所有分片都会复制到一个相同的结点并且结点健康值为绿色的。
-   3. ![1565427560741](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565427560741.png)
+   3. ![1565427560741](Elasticsearch\1565427560741.png)
 
 10. 索引别名
 
@@ -582,7 +583,7 @@ typora-copy-images-to: Elasticsearch
 
    1. 文档中字段的类型是Elasticsearch自动识别的，不需要在创建索引的时候设置字段的类型。
 
-   2. ![1565441699052](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565441699052.png)
+   2. ![1565441699052](Elasticsearch\1565441699052.png)
 
    3. ```json
       http://localhost:9200/books/_mapping
@@ -655,7 +656,7 @@ typora-copy-images-to: Elasticsearch
       }
       ```
 
-   3. ![1565442350443](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565442350443.png)
+   3. ![1565442350443](Elasticsearch\1565442350443.png)
 
    4. string:Elasticsearch 5.X之后的字段类型不再支持string,由text或keyword取代
 
@@ -663,7 +664,7 @@ typora-copy-images-to: Elasticsearch
 
    6. keyword:适用于索引结构化的字段。通常用于过滤、排序、聚合。只能通过精确值搜索到
 
-   7. 数字类型：![1565442559670](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565442559670.png)
+   7. 数字类型：![1565442559670](Elasticsearch\1565442559670.png)
 
    8. date
 
@@ -770,7 +771,7 @@ typora-copy-images-to: Elasticsearch
 
    16. range
 
-       1. ![1565444423689](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565444423689.png)
+       1. ![1565444423689](Elasticsearch\1565444423689.png)
 
        2. ```json
           {
@@ -787,7 +788,7 @@ typora-copy-images-to: Elasticsearch
 
    18. 元字段
 
-       1. ![1565444584416](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565444584416.png)
+       1. ![1565444584416](Elasticsearch\1565444584416.png)
 
        2. _field_names
 
@@ -948,13 +949,13 @@ typora-copy-images-to: Elasticsearch
        }
        ```
 
-    2. ![1565447038751](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565447038751.png)
+    2. ![1565447038751](Elasticsearch\1565447038751.png)
 
-       ![1565447059374](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565447059374.png)
+       ![1565447059374](Elasticsearch\1565447059374.png)
 
-       ![1565447069890](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565447069890.png)
+       ![1565447069890](Elasticsearch\1565447069890.png)
 
-       ![1565447077699](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565447077699.png)
+       ![1565447077699](Elasticsearch\1565447077699.png)
 
 12. ignore_above
 
@@ -975,7 +976,7 @@ typora-copy-images-to: Elasticsearch
 16. index_options
 
     1. 控制索引时存储哪些信息到倒排序索引中
-    2. ![1565447218878](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565447218878.png)
+    2. ![1565447218878](Elasticsearch\1565447218878.png)
 
 17. fields
 
@@ -1014,7 +1015,7 @@ typora-copy-images-to: Elasticsearch
     1. 词项集合
     2. 词项位置
     3. 词项的起始字符映射到原始文档中的位置
-    4. ![1565448058612](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1565448058612.png)
+    4. ![1565448058612](Elasticsearch\1565448058612.png)
 
 ## 2.1 搜索详解
 
@@ -1707,13 +1708,13 @@ typora-copy-images-to: Elasticsearch
 ### 5.1 集群规划
 
 1. 为了避免节点各自为主节点，可以在Elasticsearch的配置文件(elasticsearch.yml)这是discovery.zen.minimum_master_nodes,这个参数决定了主节点选择过程中最少需要有多少个master节点，默认配置为1。一个基本原则需要设置成N/2+1,N是集群中节点的数量。例如在3个集群中应该设为2。
-2. ![](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1566029630098.png)
+2. ![](Elasticsearch\1566029630098.png)
 
 ### 5.2 索引规划
 
 1. 默认情况下一个索引的分片数是5，副本数是1。分片是把一个大的索引分成多份放到不同的结点上来加速查询效率
 2. 查询的响应时间受多个变量的影响
-   1. ![1566030102327](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1566030102327.png)
+   1. ![1566030102327](Elasticsearch\1566030102327.png)
 
 ### 5.3 分布式集群
 
@@ -1794,7 +1795,7 @@ typora-copy-images-to: Elasticsearch
    }
    ```
 
-   ![1566047295115](C:\Users\zxw\Desktop\个人项目笔记\Elasticsearch\1566047295115.png)
+   ![1566047295115](Elasticsearch\1566047295115.png)
 
 2. cluster state:对整个集群的信息进行一个全面的了解，包括集群信息、集群中每个节点的信息、元数据、路由表等
 
